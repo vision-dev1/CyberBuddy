@@ -1,4 +1,5 @@
 # CyberBuddy
+>Yet to be Released
 
 CyberBuddy is a professional AI cybersecurity assistant built to explain vulnerabilities, provide code security analysis, and recommend best practices using the Groq AI API (`llama3-70b-8192`). 
 
