@@ -7,7 +7,6 @@ from ai_engine import get_ai_response
 
 app = FastAPI(title="CyberBuddy API")
 
-# Setup CORS for the frontend
 app.add_middleware(
     CORSMiddleware,
     allow_origins=["*"], # For local development
