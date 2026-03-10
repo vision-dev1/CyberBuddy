@@ -70,7 +70,6 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // Helper syntax parsing: basic markdown for Bold and blocks
     function parseContent(content) {
         let parsed = content.replace(/\\n/g, '<br>');
         // Convert basic code blocks
@@ -155,8 +154,7 @@ document.addEventListener('DOMContentLoaded', () => {
         chatInput.style.height = 'auto'; // Reset height
 
         appendMessageToUI('user', text);
-
-        // Add to current chat storage
+        
         const currentChat = chats.find(c => c.id === currentChatId);
         if (currentChat) {
             // update title if it's the first message
