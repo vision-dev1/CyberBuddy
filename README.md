@@ -52,3 +52,4 @@ You can now interact with CyberBuddy! All your chats are saved to `localStorage`
 
 # Author 
 Vision KC
+[Github](https://github.com/vision-dev1)
