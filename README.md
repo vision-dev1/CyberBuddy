@@ -51,5 +51,5 @@ Open the `frontend/index.html` file in your preferred web browser.
 You can now interact with CyberBuddy! All your chats are saved to `localStorage`, and you can seamlessly switch between past conversations using the sidebar.
 
 # Author 
-Vision KC
+Vision KC<br>
 [Github](https://github.com/vision-dev1)
