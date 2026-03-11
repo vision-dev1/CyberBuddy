@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>CyberBuddy - AI Cybersecurity Assistant</title>
+    <link rel="icon" type="image/png" href="assets/logo.png" />
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&amp;display=swap"
+        rel="stylesheet" />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+        rel="stylesheet" />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+        rel="stylesheet" />
+    <script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#1dc9c9",
+                        "background-light": "#f6f8f8",
+                        "background-dark": "#112121",
+                        "neutral-soft": "#f0f4f4",
+                        "border-soft": "#e2e8f0"
+                    },
+                    fontFamily: {
+                        "display": ["Inter", "sans-serif"]
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                },
+            },
+        }
+    </script>
+    <link rel="stylesheet" href="style.css" />
+</head>
+
+<body class="bg-white text-slate-700 font-display">
+    <div class="relative flex h-screen w-full overflow-hidden">
+        <!-- Sidebar -->
+        <aside class="w-64 flex-shrink-0 border-r border-slate-200 bg-slate-50 flex flex-col hidden md:flex">
+            <!-- Sidebar Header / Branding -->
+            <div class="p-4 flex items-center gap-3 h-[73px]">
+                <div
+                    class="flex h-8 w-8 items-center justify-center rounded-lg bg-white box-border border border-slate-200 text-slate-700 shadow-sm overflow-hidden">
+                    <img src="assets/logo.png" alt="CyberBuddy Logo" class="h-full w-full object-cover" />
+                </div>
+                <h1 class="text-lg font-semibold tracking-tight text-slate-900">CyberBuddy</h1>
+            </div>
+
+            <!-- New Chat Button -->
+            <div class="px-4 pb-2">
+                <button id="new-chat-btn"
+                    class="w-full flex items-center justify-between rounded-lg border border-slate-200 bg-white py-2 px-3 text-sm font-medium text-slate-700 hover:bg-slate-100 transition-colors shadow-sm">
+                    <span class="flex items-center gap-2">
+                        <span class="material-symbols-outlined text-lg">add</span>
+                        New Chat
+                    </span>
+                    <span class="material-symbols-outlined text-lg text-slate-400">edit_square</span>
+                </button>
+            </div>
+
+            <!-- Navigation -->
+            <div class="px-3 py-2 flex flex-col gap-1 overflow-y-auto flex-1">
+                <a href="#" id="nav-vulnerabilities"
+                    class="flex items-center gap-3 px-3 py-2.5 text-sm text-slate-700 rounded-lg hover:bg-slate-200/50 transition-colors nav-item"
+                    data-section="Vulnerabilities">
+                    <span class="material-symbols-outlined text-lg text-slate-500">security</span>
+                    Vulnerabilities
+                </a>
+                <a href="#" id="nav-pentesting"
+                    class="flex items-center gap-3 px-3 py-2.5 text-sm text-slate-700 rounded-lg hover:bg-slate-200/50 transition-colors nav-item"
+                    data-section="Pentesting">
+                    <span class="material-symbols-outlined text-lg text-slate-500">bolt</span>
+                    Pentesting
+                </a>
+                <a href="#" id="nav-code-analysis"
+                    class="flex items-center gap-3 px-3 py-2.5 text-sm text-slate-700 rounded-lg hover:bg-slate-200/50 transition-colors nav-item"
+                    data-section="Code Analysis">
+                    <span class="material-symbols-outlined text-lg text-slate-500">troubleshoot</span>
+                    Code Analysis
+                </a>
+                <a href="#" id="nav-quiz"
+                    class="flex items-center gap-3 px-3 py-2.5 text-sm text-slate-700 rounded-lg hover:bg-slate-200/50 transition-colors nav-item"
+                    data-section="Quiz">
+                    <span class="material-symbols-outlined text-lg text-slate-500">quiz</span>
+                    Quiz
+                </a>
+
+                <div class="mt-6 pt-6">
+                    <span class="px-3 text-[11px] font-semibold text-slate-400 mb-2 block">Today</span>
+                    <div class="flex flex-col gap-0.5" id="history-container">
+                        <!-- Chat history will be loaded here -->
+                    </div>
+                </div>
+            </div>
+
+            <!-- User Profile -->
+            <div
+                class="p-3 m-2 mt-0 rounded-lg hover:bg-slate-200/50 transition-colors cursor-pointer flex items-center gap-3">
+                <div
+                    class="flex h-8 w-8 items-center justify-center rounded-full bg-white border border-slate-200 text-slate-500">
+                    <span class="material-symbols-outlined text-xl">account_circle</span>
+                </div>
+                <div class="flex flex-col">
+                    <span class="text-sm font-medium text-slate-700">My Account</span>
+                </div>
+            </div>
+        </aside>
+
+        <!-- Main Content Area -->
+        <div class="flex flex-col flex-1 h-screen overflow-hidden bg-white">
+            <!-- Mobile Header (Visible only on mobile) -->
+            <header
+                class="md:hidden flex items-center justify-between border-b border-slate-200 px-4 py-3 bg-white sticky top-0 z-50">
+                <button class="text-slate-500 hover:text-slate-700">
+                    <span class="material-symbols-outlined">menu</span>
+                </button>
+                <div class="flex items-center gap-2">
+                    <div class="h-6 w-6 rounded-md border border-slate-200 overflow-hidden shadow-sm">
+                        <img src="assets/logo.png" alt="CyberBuddy Logo" class="h-full w-full object-cover" />
+                    </div>
+                    <h1 class="text-lg font-semibold tracking-tight text-slate-900">CyberBuddy</h1>
+                </div>
+                <div class="w-6"></div> <!-- Spacer for centering -->
+            </header>
+
+            <!-- Main Chat Area -->
+            <main class="flex-1 overflow-y-auto w-full flex flex-col items-center">
+                <div class="w-full max-w-3xl px-6 py-10 flex flex-col gap-8" id="chat-messages">
+                    <!-- Dynamic Welcome Message will be injected here via JavaScript -->
+                </div>
+            </main>
+
+            <!-- Input Area -->
+            <footer class="w-full bg-white p-4 md:p-6 pb-6 md:pb-8 flex justify-center mt-auto">
+                <div class="w-full max-w-3xl relative">
+                    <div
+                        class="flex items-end gap-3 bg-white border border-slate-200 rounded-2xl px-4 py-3 focus-within:border-slate-300 focus-within:ring-4 focus-within:ring-slate-50 transition-all shadow-sm">
+                        <button
+                            class="text-slate-400 hover:text-slate-600 flex items-center justify-center pb-1.5 pt-1">
+                            <span class="material-symbols-outlined text-xl">attach_file</span>
+                        </button>
+                        <textarea id="chat-input"
+                            class="flex-1 bg-transparent border-none focus:ring-0 text-slate-700 placeholder:text-slate-400 py-1.5 text-base resize-none min-h-[28px] max-h-[200px] overflow-hidden focus:outline-none"
+                            placeholder="Message CyberBuddy..." rows="1"></textarea>
+                        <button id="send-btn"
+                            class="bg-slate-900 hover:bg-slate-800 text-white font-medium p-2 rounded-lg transition-all flex items-center justify-center">
+                            <span class="material-symbols-outlined text-base leading-none">arrow_upward</span>
+                        </button>
+                    </div>
+                    <p class="text-center text-xs text-slate-400 mt-3 mix-blend-multiply">CyberBuddy AI can make
+                        mistakes. Verify critical security information.</p>
+                </div>
+            </footer>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
