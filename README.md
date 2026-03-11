@@ -49,3 +49,6 @@ The API will be available at `http://localhost:8000/chat`.
 Open the `frontend/index.html` file in your preferred web browser.
 
 You can now interact with CyberBuddy! All your chats are saved to `localStorage`, and you can seamlessly switch between past conversations using the sidebar.
+
+# Author 
+Vision KC
